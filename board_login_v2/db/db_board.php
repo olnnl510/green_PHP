@@ -19,7 +19,7 @@
         return $result;
     }
 
-    /* 페이지당 10개씩 보이겠다 */  /* 총 레코드 수 */  
+    /* 페이지당 10개씩 보이겠다 */  /* 총 레코드 수 */ /* param으로 보낸 row_count값 */
     function sel_paging_count(&$param) {
         $sql = "SELECT CEIL(COUNT(i_board) / {$param["row_count"]}) as cnt
         FROM t_board";
@@ -27,9 +27,10 @@
     if($param["search_txt"] !== "") {
         $sql .= " WHERE title LIKE '%{$param["search_txt"]}%'";            
     }
-         // 앞에 빈칸 없으면 에러뜸 문자열합치기
-
         /*
+
+        앞에 빈칸 없으면 에러뜸 문자열합치기
+
         .= : 문자열 합치기
         sum += 10;
         */
@@ -52,10 +53,10 @@
 
         if($param["search_txt"] !== "") {
             $sql .= " WHERE title LIKE '%{$param["search_txt"]}%'";            
-        }
+        } // title 제목에만 표시. orderby~limit 사이에 where 사용불가.
         
         $sql .= " ORDER BY A.i_board DESC
-        LIMIT {$param["s_idx"]}, {$param["row_count"]}";
+        LIMIT {$param["s_idx"]}, {$param["row_count"]}"; // index, index로부터 몇개
 
         $conn = get_conn();
         $result = mysqli_query($conn, $sql);
