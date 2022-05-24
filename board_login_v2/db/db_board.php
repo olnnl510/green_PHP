@@ -42,7 +42,6 @@
         return $row["cnt"]; /* row 변수에 배열이 넘어감. 여기서 넘어간 배열에는 방이 몇개 있을까?1개 (컬럼 1개). 방 하나에 있는 값 return (count값 12) */
     }
 
-    
     function sel_board_list(&$param) {
         $sql =
         "   SELECT A.i_board, A.title, A.created_at, B.nm

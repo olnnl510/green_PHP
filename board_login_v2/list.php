@@ -9,10 +9,15 @@ if (isset($_SESSION["login_user"])) {
 }
 
 /* 페이징 기능 */
+// 만약에 쿼리스트링값 없다면 무조건 1페이지(쿼리스트링을 받는다)
+// 페이지 넘어온것이 있는지 확인. true:넘어온키값있다 / false:1
+// page에 값이 있나? 있다면 intval.
+// intval: 문자열 -> 정수형으로 형변환해주는 함수. 강제형변환. $_GET $_POST 해서 넘어오는 값 : 무조건 문자열(정수라도 문자열로 바뀜)
 $page = 1;
 if (isset($_GET["page"])) {
     $page = intval($_GET["page"]);
 }
+    // print "<div>page : $page</div>"; // 잘받아졌는지 확인
 
 /* 검색 기능 */
 $search_txt = "";
@@ -21,7 +26,11 @@ if (isset($_GET["search_txt"])) {
 }
 
 /* 페이징 기능 */
-$row_count = 10;
+// 한 페이지당 보여주는 레코드 수
+// index 계산법
+// start index, row count, 정리해서 sel_board_list에 보내줌.
+// 배열이아닌 정수값(12)가 넘어옴. 복사하여 왼쪽에 준다. param 값 보내준다.
+$row_count = 15;
 
 $param = [
     "s_idx" => ($page - 1) * $row_count,
