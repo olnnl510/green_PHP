@@ -1,5 +1,6 @@
 <?php
     session_start();
+    session_regenerate_id(true);
     echo "Session ID : ", session_id();
 
 // 브라우저마다 할당. 브라우저 껐다가 키면 새 브라우저가 된다.
