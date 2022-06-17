@@ -10,10 +10,14 @@ class Dog extends Animal {
     function crying() {
         print "강아지가 멍멍. <br>";
     }
+    function grandFatherCrying() {
+        parent::crying();
+    }
 }
 
 class Chiwawa extends Dog {
     function crying() {
+        parent::grandFatherCrying();
         print "치와와가 왕왕 <br>";
     }
 }
@@ -46,3 +50,6 @@ doCry(new Human);
 
 
 // 오버라이딩은 무조건 의도한거임
+// 부모한테 있는 메소드 참조해서 쓸 수 있음.
+// 그러나 마음에 들지 않아 새롭게 재 정의 한것 : 오버라이딩
+// 부모관계에서만 쓸 수 있음
