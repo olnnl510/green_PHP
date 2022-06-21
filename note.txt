@@ -1,0 +1,7 @@
+WAS (Web Application Server) .class > 실행 > html
+
+Apache Server(웹서버) html
+Php
+MySQL, MariaDB
+
+우리는 php 8.1 설치
