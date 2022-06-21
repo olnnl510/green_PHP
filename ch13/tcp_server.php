@@ -14,7 +14,6 @@
     }
     $msgsock = socket_accept($sock) or die ("accept failed");
     echo "Server is ready <br>";
-     
 
     $buf = "";
     $buf = socket_read($msgsock, 2048);
